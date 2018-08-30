@@ -11,7 +11,7 @@
         "Other"
     ],
     "activationEvents": [
-        "*"
+        "onView:taskRunner"
     ],
     "main": "./out/extension",
     "scripts": {
