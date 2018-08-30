@@ -3,7 +3,7 @@
 
 // The module 'vscode' contains the VS Code extensibility API
 import * as vscode from 'vscode';
-import * as $ from 'jquery';
+import { FileExplorer } from './fileExplorer';
 
 class StrippedTask {
 	constructor(public _type: String, public _script: String){
@@ -11,7 +11,6 @@ class StrippedTask {
 }
 
 export async function activate(context: vscode.ExtensionContext) {
-
     console.log('Congratulations, your extension "taskrunnercode" is now active!');
 	
     let tasks = await vscode.tasks.fetchTasks().then(function(value) {
@@ -20,9 +19,13 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	let iterableTasks: StrippedTask[] = [];
 
-	for (var i = 0; i < 2; i++) {
+	for (var i = 0; i < tasks.length; i++) {
 		iterableTasks[i] = new StrippedTask(tasks[i].definition.type, tasks[i].definition.script);
 	}
+
+	//Complete Tree View Sample
+	new FileExplorer(context);
+	
 
 }
 
