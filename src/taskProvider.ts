@@ -1,45 +1,56 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { resolve } from 'dns';
 
-export class TaskProvider implements vscode.TreeDataProvider<Task> {
-    private _onDidChangeTreeData: vscode.EventEmitter<Task | undefined> = new vscode.EventEmitter<Task | undefined>();
-	readonly onDidChangeTreeData: vscode.Event<Task | undefined> = this._onDidChangeTreeData.event;
+export class TaskTreeDataProvider implements vscode.TreeDataProvider<Task> {
+    public static readonly config: vscode.WorkspaceConfiguration;
 
-    constructor(private workspaceRoot: String) {
+    public readonly _onDidChangeTreeData: vscode.EventEmitter<Task | null> = new vscode.EventEmitter<Task | null>();
+    public readonly onDidChangeTreeData: vscode.Event<Task | null> = this._onDidChangeTreeData.event;
+
+
+    constructor(private context: vscode.ExtensionContext) {
+
     }
 
-    refresh(): void {
+    public refresh() {
         this._onDidChangeTreeData.fire();
     }
 
-    getTreeItem(element: Task) {
-        return element;
+    public getTreeItem(item: Task): vscode.TreeItem {
+        return item;
     }
 
-    getChildren(element?: Task): Thenable<Task[]> {
-        if (!this.workspaceRoot) {
-            vscode.window.showInformationMessage('No tasks in an empty workspace');
-            return Promise.resolve([]);
+    public async getChildren(item?: Task): Promise<Task[]> {
+        if (!this.context) {
+			vscode.window.showInformationMessage('No dependency in empty workspace');
+			return Promise.resolve([]);
         }
 
-        if (element) {
-            return this.getTasks();
+        if (item) {
+            this.getTasks;
         } else {
-            vscode.window.showInformationMessage('Workspace has no tasks');
+            vscode.window.showInformationMessage('Project has no tasks');
+            return Promise.resolve([]);
         }
 
     }
 
     private async getTasks(): Promise<Task[]> {
-        let tasks = await vscode.tasks.fetchTasks();
-    
-        let iterableTasks: Task[] = [];
-    
-        for (var i = 0; i < tasks.length; i++) {
-            iterableTasks[i] = new Task(tasks[i].definition.label, tasks[i].definition.type, tasks[i].definition.script);
-        }
+        let tasks = await vscode.tasks.fetchTasks().then(function (value) {
+            return value;
+        });
 
+        let iterableTasks: Task[] = [];
+
+        if (tasks.length !== 0) {
+            for (var i = 0; i < tasks.length; i++) {
+                iterableTasks[i] = new Task(tasks[i].definition.script, tasks[i].definition.type, vscode.TreeItemCollapsibleState.Collapsed);
+            }
+        } else {
+            console.log("uh oh");
+        }
         return iterableTasks;
     }
 }
@@ -50,7 +61,7 @@ class Task extends vscode.TreeItem {
         public readonly label: string,
         private type: string,
         public readonly collapsibleState: vscode.TreeItemCollapsibleState,
-        public readonly command?: vscode.Command
+        public command?: vscode.Command
     ) {
         super(label, collapsibleState);
     }
@@ -58,6 +69,8 @@ class Task extends vscode.TreeItem {
     get tooltip(): string {
         return `${this.type}-${this.label}`
     }
+
+    iconPath = path.join(__filename, '..', '..', '..', 'assets', 'code.svg');
 
     contextValue = 'task';
 }

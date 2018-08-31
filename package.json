@@ -11,9 +11,34 @@
         "Other"
     ],
     "activationEvents": [
-        "onView:taskRunner"
+        "*"
     ],
     "main": "./out/extension",
+    "contributes": {
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "task-explorer",
+                    "title": "Task Explorer",
+                    "icon": "assets/code.svg"
+                }
+            ]
+        },
+        "views": {
+            "task-explorer": [
+                {
+                    "id": "task-outline",
+                    "name": "Task Explorer"
+                }
+            ]
+        }, 
+        "commands": [
+            {
+				"command": "task-outline.addEntry",
+				"title": "Add"
+			}
+        ]
+    },
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
