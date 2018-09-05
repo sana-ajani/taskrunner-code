@@ -1,24 +1,23 @@
 'use strict';
 
-
-// The module 'vscode' contains the VS Code extensibility API
 import * as vscode from 'vscode';
-import { TaskTreeDataProvider } from "./taskProvider";
-import * as $ from 'jquery';
+import { TaskTreeDataProvider } from './taskProvider'
 
+export function activate(context: vscode.ExtensionContext) {
 
+	const taskTreeDataProvider = new TaskTreeDataProvider(context);
 
-export async function activate(context: vscode.ExtensionContext) {
-
-    console.log('Congratulations, your extension "taskrunnercode" is now active!');
-	const taskTreeDataProvider: TaskTreeDataProvider = new TaskTreeDataProvider(context);
-	vscode.window.registerTreeDataProvider("task-outline", taskTreeDataProvider);
-
-	vscode.commands.registerCommand('task-outline.refreshEntry', () => taskTreeDataProvider.refresh());
-	vscode.commands.registerCommand('task-outline.addEntry', a => vscode.window.showInformationMessage('Successfully called add entry'));
-
+	vscode.window.registerTreeDataProvider('taskOutline', taskTreeDataProvider);
+	vscode.commands.registerCommand('taskOutline.refresh', () => taskTreeDataProvider.refresh());
+	
+	context.subscriptions.push(vscode.commands.registerCommand('vscode.executeTask', task => {
+		vscode.tasks.executeTask(task).then(function (value) {
+			console.log("executing task!");
+			return value;
+		});	
+	}));
 }
 
-export function deactivate() {
+export function deactivate(): void {
 	
 }

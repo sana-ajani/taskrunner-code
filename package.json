@@ -15,29 +15,33 @@
     ],
     "main": "./out/extension",
     "contributes": {
-        "viewsContainers": {
-            "activitybar": [
-                {
-                    "id": "task-explorer",
-                    "title": "Task Explorer",
-                    "icon": "assets/code.svg"
-                }
-            ]
-        },
         "views": {
-            "task-explorer": [
+            "explorer": [
                 {
-                    "id": "task-outline",
+                    "id": "taskOutline",
                     "name": "Task Explorer"
                 }
             ]
-        }, 
+        },
         "commands": [
             {
-				"command": "task-outline.addEntry",
-				"title": "Add"
-			}
-        ]
+                "command": "taskOutline.refresh",
+                "title": "Refresh"
+            }, 
+            {
+                "command": "vscode.executeTask",
+                "title": "Execute"
+            }
+        ],
+        "menus": {
+            "view/title": [
+                {
+                    "command": "vscode.executeTask",
+                    "when": "view == taskOutline",
+                    "group": "navigation"
+                }
+            ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
@@ -54,7 +58,9 @@
         "vscode": "^1.1.21"
     },
     "dependencies": {
+        "gulp-install": "^1.1.0",
         "jquery": "^3.3.1",
+        "jsonc-parser": "^2.0.2",
         "npm": "^6.4.0"
     }
 }
