@@ -6,7 +6,7 @@ There are many tools that exist to automate parts of your project, including for
 ## Demo
 
 
-\!\[extension demo\]\(assets/taskrunner.gif\)
+![extension demo](assets/taskrunner.gif)
 
 
 ## Running the extension
