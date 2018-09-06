@@ -19,7 +19,7 @@
             "explorer": [
                 {
                     "id": "taskOutline",
-                    "name": "Task Explorer"
+                    "name": "Task Runner"
                 }
             ]
         },
@@ -29,19 +29,10 @@
                 "title": "Refresh"
             }, 
             {
-                "command": "vscode.executeTask",
+                "command": "taskOutline.executeTask",
                 "title": "Execute"
             }
-        ],
-        "menus": {
-            "view/title": [
-                {
-                    "command": "vscode.executeTask",
-                    "when": "view == taskOutline",
-                    "group": "navigation"
-                }
-            ]
-        }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",

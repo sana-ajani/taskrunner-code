@@ -9,13 +9,15 @@ export function activate(context: vscode.ExtensionContext) {
 
 	vscode.window.registerTreeDataProvider('taskOutline', taskTreeDataProvider);
 	vscode.commands.registerCommand('taskOutline.refresh', () => taskTreeDataProvider.refresh());
-	
-	context.subscriptions.push(vscode.commands.registerCommand('vscode.executeTask', task => {
+
+	vscode.commands.registerCommand('taskOutline.executeTask', task => {
+		console.log(task);	
 		vscode.tasks.executeTask(task).then(function (value) {
-			console.log("executing task!");
 			return value;
-		});	
-	}));
+		}, function(e) {
+			console.error('I am error');
+		});
+	})
 }
 
 export function deactivate(): void {

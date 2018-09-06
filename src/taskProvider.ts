@@ -1,7 +1,4 @@
 import * as vscode from 'vscode';
-import * as json from 'jsonc-parser';
-import * as path from 'path';
-import { isNumber } from 'util';
 
 export class TaskTreeDataProvider implements vscode.TreeDataProvider<TreeTask> {
 
@@ -11,7 +8,6 @@ export class TaskTreeDataProvider implements vscode.TreeDataProvider<TreeTask> {
 	private autoRefresh: boolean = true;
 
 	constructor(private context: vscode.ExtensionContext) {
-
 		this.autoRefresh = vscode.workspace.getConfiguration('taskOutline').get('autorefresh');
 	}
 
@@ -20,18 +16,15 @@ export class TaskTreeDataProvider implements vscode.TreeDataProvider<TreeTask> {
 	}
 
 	public async getChildren(task?: TreeTask): Promise<TreeTask[]> {
-		
-
+	
 		let tasks = await vscode.tasks.fetchTasks().then(function (value) {
 			return value;
 		});
 
 		let taskNames: TreeTask[] = [];
-
 		if (tasks.length != 0) {
 			for (var i = 0; i < tasks.length; i++ ) {
-				taskNames[i] = new TreeTask(tasks[i].definition.type, tasks[i].name, vscode.TreeItemCollapsibleState.None, 
-					new vscode.Task(tasks[i].definition, tasks[i].scope, tasks[i].source, tasks[i].definition.type)); 
+				taskNames[i] = new TreeTask(tasks[i].definition.type, tasks[i].name, vscode.TreeItemCollapsibleState.None, tasks[i]);
 			}
 		}
 		return taskNames;
@@ -39,11 +32,15 @@ export class TaskTreeDataProvider implements vscode.TreeDataProvider<TreeTask> {
 	}
 
 	getTreeItem(task: TreeTask): vscode.TreeItem {
+		task.command = { command: 'taskOutline.executeTask', title: "Execute", arguments: [task.task], };
 		return task;
 	}
 }
 
 class TreeTask extends vscode.TreeItem {
+	task: vscode.Task;
+	type: string;
+
 	constructor(
 		type: string, 
 		label: string, 
@@ -51,6 +48,8 @@ class TreeTask extends vscode.TreeItem {
 		task: vscode.Task
 	) {
 		super(label, collapsibleState);
+		this.task = task;
+		this.type = type;
 	}
 	 
 }
