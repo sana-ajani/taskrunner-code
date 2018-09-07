@@ -1,9 +1,10 @@
 {
     "name": "taskrunnercode",
-    "displayName": "TaskRunnerCode",
-    "description": "Task Runner Explorer for VS Code",
+    "displayName": "Task Runner",
+    "description": "VS Code extension to view and run tasks from Explorer pane",
+    "icon": "assets/check.png",
     "version": "0.0.1",
-    "publisher": "sana-ajani",
+    "publisher": "SanaAjani",
     "repository": {
         "type": "git",
         "url": "https://github.com/sana-ajani/taskrunner-code.git"
