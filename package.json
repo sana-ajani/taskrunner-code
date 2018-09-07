@@ -4,6 +4,10 @@
     "description": "Task Runner Explorer for VS Code",
     "version": "0.0.1",
     "publisher": "sana-ajani",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/sana-ajani/taskrunner-code.git"
+    },
     "engines": {
         "vscode": "^1.26.0"
     },
