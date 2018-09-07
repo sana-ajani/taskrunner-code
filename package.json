@@ -3,7 +3,7 @@
     "displayName": "Task Runner",
     "description": "VS Code extension to view and run tasks from Explorer pane",
     "icon": "assets/check.png",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "SanaAjani",
     "repository": {
         "type": "git",
@@ -32,7 +32,7 @@
             {
                 "command": "taskOutline.refresh",
                 "title": "Refresh"
-            }, 
+            },
             {
                 "command": "taskOutline.executeTask",
                 "title": "Execute"
