@@ -2,7 +2,7 @@
     "name": "taskrunnercode",
     "displayName": "Task Runner",
     "description": "VS Code extension to view and run tasks from Explorer pane",
-    "icon": "assets/check.png",
+    "icon": "check.png",
     "version": "0.1.0",
     "publisher": "SanaAjani",
     "repository": {
@@ -15,6 +15,15 @@
     "categories": [
         "Other"
     ],
+    "keywords": [
+        "tasks",
+        "packages",
+        "execute"
+    ],
+    "galleryBanner": {
+        "color": "#d7ede1",
+        "theme": "dark"
+    },
     "activationEvents": [
         "*"
     ],
