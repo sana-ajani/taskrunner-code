@@ -21,8 +21,7 @@
         "execute"
     ],
     "galleryBanner": {
-        "color": "#d7ede1",
-        "theme": "dark"
+        "color": "#d7ede1"
     },
     "activationEvents": [
         "*"

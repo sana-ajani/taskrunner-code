@@ -24,7 +24,7 @@ export class TaskTreeDataProvider implements vscode.TreeDataProvider<TreeTask> {
 		let taskNames: TreeTask[] = [];
 		if (tasks.length != 0) {
 			for (var i = 0; i < tasks.length; i++ ) {
-				taskNames[i] = new TreeTask(tasks[i].definition.type, tasks[i].name, vscode.TreeItemCollapsibleState.None, tasks[i]);
+				taskNames[i] = new TreeTask(tasks[i].definition.type, tasks[i].name, vscode.TreeItemCollapsibleState.None, { command: 'taskOutline.executeTask', title: "Execute", arguments: [tasks[i]] });
 			}
 		}
 		return taskNames;
@@ -32,24 +32,22 @@ export class TaskTreeDataProvider implements vscode.TreeDataProvider<TreeTask> {
 	}
 
 	getTreeItem(task: TreeTask): vscode.TreeItem {
-		task.command = { command: 'taskOutline.executeTask', title: "Execute", arguments: [task.task], };
 		return task;
 	}
 }
 
 class TreeTask extends vscode.TreeItem {
-	task: vscode.Task;
 	type: string;
 
 	constructor(
 		type: string, 
 		label: string, 
 		collapsibleState: vscode.TreeItemCollapsibleState,
-		task: vscode.Task
+		command?: vscode.Command
 	) {
 		super(label, collapsibleState);
-		this.task = task;
 		this.type = type;
+		this.command = command;
 	}
 	 
 }
