@@ -38,10 +38,6 @@
         },
         "commands": [
             {
-                "command": "taskOutline.refresh",
-                "title": "Refresh"
-            },
-            {
                 "command": "taskOutline.executeTask",
                 "title": "Execute"
             }
@@ -55,16 +51,10 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "@types/jquery": "^3.3.6",
         "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
         "typescript": "^3.0.3",
-        "vscode": "^1.1.21"
-    },
-    "dependencies": {
-        "gulp-install": "^1.1.0",
-        "jquery": "^3.3.1",
-        "jsonc-parser": "^2.0.2",
-        "npm": "^6.4.0"
+        "vscode": "^1.1.21",
+        "tslint": "^5.8.0"
     }
 }

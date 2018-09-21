@@ -11,6 +11,5 @@ There are many tools that exist to automate parts of your project, including for
 
 ## Running the extension
 1. Open this example in VS Code
-2. F5 to start debugging the Extension Host
-3. Task Runner view should be shown in Explorer pane
-4. Click on a task to execute it
+2. Task Runner view should be shown in Explorer pane on start up
+3. Click on a task to execute it
