@@ -40,8 +40,21 @@
             {
                 "command": "taskOutline.executeTask",
                 "title": "Execute"
+            },
+            {
+                "command": "taskOutline.refresh",
+                "title": "Refresh",
+                "icon": "assets/refresh_icon.svg"
             }
-        ]
+        ],
+        "menus": {
+            "view/title": [
+                {
+                    "command": "taskOutline.refresh",
+                    "group": "navigation"
+                }
+            ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
