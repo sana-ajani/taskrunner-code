@@ -1,5 +1,7 @@
 # Task Runner
 
+This extension is now built-in to the product, will no longer be maintained!
+
 ## What is this?
 
 There are many tools that exist to automate parts of your project, including for installing dependencies, building, testing, linting, deploying. This extension adds an additional "Task Runner" view in your Explorer Pane to visualize and individually run the auto-detected tasks in your project. VS Code auto-detects the following task runners: Gulp, Grunt, Jake and npm.
@@ -14,9 +16,9 @@ There are many tools that exist to automate parts of your project, including for
 
 
 
-- TODO Get user tests running @alexr00
+- TODO #14 Get user tests running @alexr00 
 
-- TODO Add deprecation warning @sana-ajani
+- TODO #13 Add deprecation warning @sana-ajani
 
 - TODO Update gif with latest VS Code UX @joaomoreno
 
