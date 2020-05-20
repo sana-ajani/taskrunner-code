@@ -1,6 +1,5 @@
 # Task Runner
 
-This extension is now built-in to the product, will no longer be maintained!
 
 ## What is this?
 
@@ -16,10 +15,10 @@ There are many tools that exist to automate parts of your project, including for
 
 
 
-- TODO #14 Get user tests running @alexr00 
+- TODO Get user tests running 
 
-- TODO #13 Add deprecation warning @sana-ajani
+- TODO Add deprecation warning @sana-ajani
 
-- TODO Update gif with latest VS Code UX @joaomoreno
+- TODO Update gif with latest VS Code UX 
 
 
