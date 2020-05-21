@@ -1,5 +1,6 @@
 # Task Runner
 
+## This extension is no longer being maintained, check out NPM Explorer in the product!
 
 ## What is this?
 
@@ -15,9 +16,9 @@ There are many tools that exist to automate parts of your project, including for
 
 
 
-- TODO Get user tests running 
+- TODO Get user tests running @RMacfarlane
 
-- TODO Add deprecation warning @sana-ajani
+- TODO #16 Add deprecation warning @sana-ajani
 
 - TODO Update gif with latest VS Code UX 
 
