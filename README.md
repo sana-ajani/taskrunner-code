@@ -8,5 +8,5 @@ There are many tools that exist to automate parts of your project, including for
 
 ![extension demo](https://github.com/sana-ajani/taskrunner-code/blob/master/assets/taskrunner.gif?raw=true)
 
----
+
 
