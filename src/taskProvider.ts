@@ -12,7 +12,7 @@ export class TaskTreeDataProvider implements vscode.TreeDataProvider<TreeTask> {
 	}
 
 	refresh(): void {
-		this._onDidChangeTreeData.fire();
+		this._onDidChangeTreeData.fire(null);
 	}
 
 	public async getChildren(task?: TreeTask): Promise<TreeTask[]> {
